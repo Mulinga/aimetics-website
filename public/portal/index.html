@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0B2545"><meta name="description" content="CounterSign by AiMetics — interactive authorisation demonstration">
+<title>CounterSign Portal | AiMetics</title>
+<style>
+:root{--navy:#0B2545;--teal:#00A3A3;--aqua:#14D1C1;--orange:#FF8A00;--paper:#F3F6F9;--ink:#132C45;--muted:#718397;--line:#E1E9EF}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);font-family:Inter,"Segoe UI",Arial,sans-serif;color:var(--ink)}
+header{height:76px;background:var(--navy);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(18px,5vw,68px);color:white}
+.brand img{display:block;width:190px;height:auto;filter:brightness(0) invert(1)}.top-right{display:flex;align-items:center;gap:14px;font-size:12px;color:#c5d4e0}.dot{width:8px;height:8px;border-radius:50%;background:var(--aqua);display:inline-block;margin-right:7px}
+a{color:inherit}.back{color:#c5d4e0;text-decoration:none}
+.wrap{max-width:1320px;margin:0 auto;padding:34px 24px 60px}
+.heading{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:22px}.eyebrow{font-size:10px;letter-spacing:1.8px;font-weight:800;color:#008f91}.heading h1{font-size:30px;letter-spacing:-.8px;margin:8px 0}.heading p{margin:0;color:var(--muted);font-size:14px}
+.demo{border:1px solid #f1d7ad;background:#fff8ec;color:#805a1e;border-radius:9px;padding:13px 16px;display:flex;gap:11px;align-items:center;font-size:12px;margin-bottom:18px}.demo strong{color:#9a620d}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:18px}.stat,.panel{background:#fff;border:1px solid var(--line);border-radius:12px}.stat{padding:16px}.stat span{display:block;color:var(--muted);font-size:11px}.stat b{display:block;font-size:22px;margin-top:8px}.green{color:#14825e}.amber{color:#ad710f}.red{color:#c43f43}
+.columns{display:grid;grid-template-columns:1fr 1fr;gap:16px}.panel{padding:22px}.panel-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.panel-title h2{font-size:17px;margin:5px 0}.pill{background:#e8f7f5;color:#008d8b;border-radius:20px;padding:6px 10px;font-size:10px;font-weight:800}
+label{display:block;font-size:12px;font-weight:700}.amount{display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;margin-top:8px;padding:0 12px}.amount span{color:var(--muted)}.amount input{border:0;outline:0;width:100%;padding:13px;font-size:20px;font-weight:700;color:var(--ink)}
+.checks{display:grid;gap:14px;margin:22px 0}.check{display:flex;align-items:center;gap:10px;color:#40576d;font-weight:500}.check input{accent-color:var(--teal);width:16px;height:16px}
+button{cursor:pointer;font:inherit}.primary{border:0;background:var(--teal);color:white;padding:13px 16px;border-radius:7px;font-weight:800;width:100%}.primary:hover{background:#008e90}.hint{font-size:10px;color:#8998a6;line-height:1.6}
+.result-amount{font-size:30px;font-weight:800;letter-spacing:-1px;margin:2px 0}.muted{color:var(--muted);font-size:12px}.status{font-size:10px;font-weight:900;letter-spacing:.5px;padding:6px 9px;border-radius:20px}.allow{background:#e5f7ef;color:#16835c}.hold{background:#fff4df;color:#a66a0c}.block{background:#fdeaea;color:#c43c3c}
+.score{margin:22px 0}.score-head{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}.score-head b{color:var(--ink)}.track{height:7px;background:#edf1f4;border-radius:10px;margin-top:9px;overflow:hidden}.track i{display:block;height:100%;background:var(--orange);border-radius:10px}
+.reason{border-top:1px solid var(--line);padding-top:14px;font-size:12px}.reason p{color:var(--muted);line-height:1.6}
+.assent{background:#f5f9fb;border-radius:9px;padding:14px;margin-top:18px;font-size:12px}.assent p{color:var(--muted)}.answers{display:flex;gap:8px}.answers button{flex:1;border:1px solid #ccd9e2;background:white;border-radius:6px;padding:10px 6px;color:#28465f;font-weight:800}.answers button:hover{border-color:var(--teal);color:#008d8b}
+.ledger{margin-top:16px}.table-scroll{overflow-x:auto}table{width:100%;border-collapse:collapse;text-align:left;font-size:11px;min-width:650px}th{color:#8292a1;font-weight:700;padding:12px 9px;border-bottom:1px solid var(--line)}td{padding:13px 9px;border-bottom:1px solid #f0f3f6;color:#4c6175}tbody tr{cursor:pointer}tbody tr:hover{background:#f8fbfc}td b{color:#173653}
+footer{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:25px;color:#8b99a6;font-size:10px}footer a{color:#008f91;text-decoration:none}
+@media(max-width:900px){.stats{grid-template-columns:repeat(3,1fr)}.columns{grid-template-columns:1fr}}
+@media(max-width:560px){header{height:66px}.brand img{width:155px}.top-right{font-size:10px}.wrap{padding:25px 14px 40px}.heading{align-items:flex-start;flex-direction:column}.heading h1{font-size:25px}.stats{grid-template-columns:repeat(2,1fr)}.stat:last-child{grid-column:span 2}.panel{padding:17px}.answers{flex-wrap:wrap}footer{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<header><a class="brand" href="../" aria-label="AiMetics home"><img src="../brand/aimetics-logo.svg" alt="AiMetics"></a><div class="top-right"><span><i class="dot"></i>DEMONSTRATION ENVIRONMENT</span><a class="back" href="../">← AiMetics website</a></div></header>
+<main class="wrap">
+<div class="heading"><div><div class="eyebrow">AIMETICS / COUNTERSIGN</div><h1>Authorisation control portal</h1><p>Evaluate sensitive AI-initiated actions before they reach financial systems.</p></div><span class="pill">COUNTERSIGN 0.1 · SIMULATOR</span></div>
+<div class="demo"><span>⚠</span><span><strong>SIMULATION ONLY</strong> — Synthetic data. No money moves, no customer is contacted and no bank, mobile-money or telco system is connected.</span></div>
+<section class="stats">
+<div class="stat"><span>Evaluated actions</span><b id="total">3</b></div><div class="stat"><span>Allowed</span><b class="green" id="allowed">1</b></div><div class="stat"><span>Held</span><b class="amber" id="held">1</b></div><div class="stat"><span>Blocked</span><b class="red" id="blocked">1</b></div><div class="stat"><span>Value under intervention</span><b id="exposure">KSh 254,000</b></div>
+</section>
+<div class="columns">
+<section class="panel"><div class="panel-title"><div><div class="eyebrow">LIVE SIMULATOR</div><h2>Test a transaction</h2></div><span class="pill">SYNTHETIC</span></div>
+<label for="amount">Transfer amount (KES)</label><div class="amount"><span>KSh</span><input id="amount" type="number" min="0" value="180000"></div>
+<div class="checks"><label class="check"><input id="beneficiary" type="checkbox" checked> First-time beneficiary</label><label class="check"><input id="simswap" type="checkbox" checked> Recent SIM-swap signal</label><label class="check"><input id="device" type="checkbox" checked> New / changed device</label></div>
+<button class="primary" id="evaluate">Evaluate action →</button><p class="hint">Illustrative, deterministic rules only. This is not a trained risk model or a production security control.</p></section>
+<section class="panel"><div class="panel-title"><div><div class="eyebrow">SELECTED ACTION</div><h2 id="ref">CS-10482</h2></div><span class="status block" id="decision">BLOCK</span></div>
+<div class="result-amount" id="resultAmount">KSh 180,000</div><div class="muted" id="beneficiaryText">New beneficiary ···· 4821</div>
+<div class="score"><div class="score-head"><span>Illustrative risk score</span><b id="score">100/100</b></div><div class="track"><i id="bar" style="width:100%"></i></div></div>
+<div class="reason"><b>Policy signals</b><p id="reason">High-value transfer · First-time beneficiary · Recent SIM-swap signal · New or changed device</p></div>
+<div class="assent"><b>Assent customer confirmation (simulated)</b><p>Would you authorise this transfer?</p><div class="answers"><button data-answer="YES">YES</button><button data-answer="NO">NO</button><button data-answer="TIMEOUT">No response</button></div><p id="answerText">Simulated customer response: NO</p><span class="hint">A real deployment would require a secure, consented customer channel.</span></div>
+</section></div>
+<section class="panel ledger"><div class="panel-title"><div><div class="eyebrow">PROOF</div><h2>Action record ledger</h2></div><span class="pill">LOCAL SESSION</span></div><div class="table-scroll"><table><thead><tr><th>Reference</th><th>Time</th><th>Amount</th><th>Beneficiary</th><th>Decision</th><th>Customer</th></tr></thead><tbody id="rows"></tbody></table></div><p class="hint">Session-only records held in this browser tab. This prototype does not yet implement server-side persistence or cryptographic audit verification.</p></section>
+<footer><span>AiMetics · CounterSign 0.1 · Product concept demonstration · © 2026</span><a href="../">Return to AiMetics ↗</a></footer>
+</main>
+<script>
+const money=n=>'KSh '+Number(n).toLocaleString('en-KE',{maximumFractionDigits:0});
+let records=[
+{id:'CS-10482',amount:180000,beneficiary:'New beneficiary ···· 4821',status:'BLOCK',score:100,reason:'High-value transfer · First-time beneficiary · Recent SIM-swap signal · New or changed device',customer:'NO',time:'09:42:18'},
+{id:'CS-10481',amount:12500,beneficiary:'Saved beneficiary ···· 1092',status:'ALLOW',score:0,reason:'Within configured policy',customer:'YES',time:'09:39:02'},
+{id:'CS-10480',amount:74000,beneficiary:'New beneficiary ···· 2206',status:'HOLD',score:37,reason:'First-time beneficiary · Elevated transaction value',customer:'TIMEOUT',time:'09:31:44'}
+];
+let selected=records[0],counter=10483;
+function render(){
+const count=s=>records.filter(r=>r.status===s).length;
+document.getElementById('total').textContent=records.length;document.getElementById('allowed').textContent=count('ALLOW');document.getElementById('held').textContent=count('HOLD');document.getElementById('blocked').textContent=count('BLOCK');
+document.getElementById('exposure').textContent=money(records.filter(r=>r.status!=='ALLOW').reduce((a,r)=>a+r.amount,0));
+document.getElementById('rows').innerHTML=records.map(r=>'<tr data-id="'+r.id+'"><td><b>'+r.id+'</b></td><td>'+r.time+'</td><td>'+money(r.amount)+'</td><td>'+r.beneficiary+'</td><td><span class="status '+r.status.toLowerCase()+'">'+r.status+'</span></td><td>'+r.customer+'</td></tr>').join('');
+document.querySelectorAll('#rows tr').forEach(tr=>tr.addEventListener('click',()=>{selected=records.find(r=>r.id===tr.dataset.id);showSelected()}));
+}
+function showSelected(){
+document.getElementById('ref').textContent=selected.id;document.getElementById('decision').textContent=selected.status;document.getElementById('decision').className='status '+selected.status.toLowerCase();
+document.getElementById('resultAmount').textContent=money(selected.amount);document.getElementById('beneficiaryText').textContent=selected.beneficiary;
+document.getElementById('score').textContent=selected.score+'/100';document.getElementById('bar').style.width=selected.score+'%';document.getElementById('reason').textContent=selected.reason;document.getElementById('answerText').textContent='Simulated customer response: '+(selected.customer||'NOT REQUESTED');
+}
+document.getElementById('evaluate').addEventListener('click',()=>{
+const amount=Math.max(0,Number(document.getElementById('amount').value)||0),fresh=document.getElementById('beneficiary').checked,swap=document.getElementById('simswap').checked,device=document.getElementById('device').checked;
+let score=0,signals=[];if(amount>=100000){score+=25;signals.push('High-value transfer')}else if(amount>=50000){score+=12;signals.push('Elevated transaction value')}
+if(fresh){score+=25;signals.push('First-time beneficiary')}if(swap){score+=40;signals.push('Recent SIM-swap signal')}if(device){score+=15;signals.push('New or changed device')}
+const status=score>=65?'BLOCK':score>=30?'HOLD':'ALLOW';
+selected={id:'CS-'+counter++,amount,beneficiary:'Simulated beneficiary ···· 7319',status,score:Math.min(score,100),reason:signals.join(' · ')||'Within configured policy',customer:status==='ALLOW'?'YES':'PENDING',time:new Date().toLocaleTimeString('en-GB')};
+records.unshift(selected);render();showSelected();
+});
+document.querySelectorAll('[data-answer]').forEach(btn=>btn.addEventListener('click',()=>{
+if(!selected)return;const answer=btn.dataset.answer;selected.customer=answer;
+if(answer==='NO')selected.status='BLOCK';else if(answer==='YES'&&selected.status==='HOLD')selected.status='ALLOW';
+render();showSelected();
+}));
+render();showSelected();
+</script>
+</body></html>
