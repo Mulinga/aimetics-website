@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ArrowRight, ShieldCheck, Fingerprint, LockKeyhole, Activity, Smartphone, FileCheck2, CheckCircle2, Menu, X, Network, Eye, ChevronRight } from 'lucide-react';
 
 const portal = `${import.meta.env.BASE_URL}portal/`;
-const logo = `${import.meta.env.BASE_URL}brand/aimetics-logo-horizontal.svg`;
+const logo = `${import.meta.env.BASE_URL}brand/aimetics-logo.svg`;
 export default function App() {
   const [menu, setMenu] = useState(false);
   const jump = (id: string) => { document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }); setMenu(false); };
